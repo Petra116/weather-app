@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App</h1>
+        <form id="weather-form">
+            <input type="text" id="city" placeholder="Enter city name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weather-result"></div>
+    </div>
+
+    <script>
+        document.getElementById('weather-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const city = document.getElementById('city').value;
+
+            const response = await fetch('/weather', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ city })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById('weather-result').innerHTML = `
+                    <h2>${data.name}</h2>
+                    <p>Temperature: ${data.main.temp} °C</p>
+                    <p>Weather: ${data.weather[0].description}</p>
+                `;
+            } else {
+                document.getElementById('weather-result').innerHTML = `<p>City not found. Please try again.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -23,7 +23,9 @@ A buildeléshez szükséges config-ban a következőket kell beállítani:
 docker pull spirpetra/weather-app:latest
 docker run --rm weather-app /bin/bash -c "git clone https://github.com/Petra116/weather-app.git && cd weather-app && node server.js"
 ```
-Egy korábbi sikeres buildelés: ADD PHOTO
+Egy korábbi sikeres buildelés:
+![](https://github.com/Petra116/weather-app/blob/main/SuccessfulBuild.png)
+![](https://github.com/Petra116/weather-app/blob/main/Config.png)
 
 - Nginx: Az Nginx config fájlja az nginx folderben található. Beüzemeléséhez egy docker-compose.yaml fájlt készítettem, így a weather-app folderen belül elegendő egy
 ```bash

@@ -1,8 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-const dotenv = require('dotenv');
-
-dotenv.config();
 
 const app = express();
 const PORT = 3000;
@@ -14,8 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 // Weather route
 app.post('/weather', async (req, res) => {
     const city = req.body.city;
-    const apiKey = process.env.API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=4b28de7dc0cd63fa450071809e1e8770&units=metric`;
 
     try {
         const response = await axios.get(url);

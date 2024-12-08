@@ -2,9 +2,7 @@ FROM node:20
 
 WORKDIR /app
 
-RUN git clone https://github.com/Petra116/weather-app.git
-
-WORKDIR /app/weather-app
+COPY . .
 
 RUN npm install
 
